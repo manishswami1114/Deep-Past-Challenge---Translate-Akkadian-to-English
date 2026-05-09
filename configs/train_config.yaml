@@ -1,0 +1,48 @@
+# Training configuration for ByT5 Akkadian-to-English
+model:
+  name: "google/byt5-large"
+  max_source_length: 1024
+  max_target_length: 1280
+  source_prefix: "translate Akkadian to English: "
+
+phase1:
+  description: "Pre-fine-tune on all data (including ORACC)"
+  epochs: 5
+  learning_rate: 3e-4
+  warmup_steps: 500
+
+phase2:
+  description: "Fine-tune on OA-only high-quality data"
+  epochs: 15
+  learning_rate: 5e-5
+  warmup_steps: 200
+
+phase3:
+  description: "Fine-tune on sentence-level only"
+  epochs: 5
+  learning_rate: 1e-5
+  warmup_steps: 100
+
+training:
+  batch_size: 4
+  gradient_accumulation_steps: 8
+  weight_decay: 0.01
+  label_smoothing: 0.1
+  fp16: true
+  seed: 42
+
+generation:
+  num_beams: 5
+  length_penalty: 1.0
+  no_repeat_ngram_size: 3
+  early_stopping: true
+
+source_weights:
+  strategy_a: 1.0
+  strategy_b_short: 0.8
+  strategy_b_aligned: 0.6
+  strategy_b_doc: 0.5
+  strategy_c: 0.7
+  oracc: 0.4
+  publications: 0.3
+  lexicon: 0.1

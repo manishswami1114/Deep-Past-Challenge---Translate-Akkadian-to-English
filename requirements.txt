@@ -1,0 +1,13 @@
+numpy
+pandas
+torch
+datasets
+transformers
+evaluate
+sacrebleu
+sentencepiece
+jupytext
+tqdm
+scikit-learn
+accelerate
+safetensors

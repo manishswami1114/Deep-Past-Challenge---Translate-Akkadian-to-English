@@ -1,0 +1,35 @@
+# Deep Past Akkadian Challenge .gitignore
+
+# Environments & OS
+.env
+.venv
+env/
+venv/
+.DS_Store
+.claude/
+
+# Python & Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Data & Models (Ignore large folders)
+data/*/
+data_external/
+data_processed/
+models/
+byt5-dpc-v2/
+
+# Specific large files
+*.zip
+*.pdf
+*.bin
+*.pt
+*.pth
+*.safetensors
+
+# Keep small data files in the root of data/ if they are essential
+# (e.g., proper_noun_dict.json, train_final.csv)
+# If you want to include them, uncomment below:
+# !data/*.csv
+# !data/*.json
